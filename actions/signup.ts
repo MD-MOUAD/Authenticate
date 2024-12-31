@@ -11,10 +11,5 @@ export const signup = async (values: signupFormValues) => {
   if (!parsedValues.success) {
     console.log('error')
   }
-  const success = parsedValues.data?.email === 'gamepass999@gmail.com'
-  if (success) {
-    return { success: 'Email Sent' }
-  } else {
-    return { error: 'This Email Already exits!' }
-  }
+  
 }
