@@ -20,11 +20,13 @@ import {
 import { Eye, EyeOff } from 'lucide-react'
 import { useState } from 'react'
 import { signin } from '@/actions/signin'
-import FormError from './form-error'
+import FormError from '@/components/forms/form-error'
+import FormSuccess from '@/components/forms/form-success'
 
 export function SigninForm() {
   const [showPassword, setShowPassword] = useState(false)
   const [formError, setFormError] = useState<string | undefined>('')
+  const [formSuccess, setFormSuccess] = useState<string | undefined>('')
 
   const form = useForm<signinFormValues>({
     resolver: zodResolver(signinFormSchema),
@@ -36,12 +38,13 @@ export function SigninForm() {
 
   async function onSubmit(values: signinFormValues) {
     setFormError('')
+    setFormSuccess('')
 
     const res = await signin(values)
-    if (res.success) {
-      alert(res.success)
+    if (res?.success) {
+      setFormSuccess(res.success)
     } else {
-      setFormError(res.error)
+      setFormError(res?.error || 'Something went wrong!')
     }
   }
   return (
@@ -103,6 +106,7 @@ export function SigninForm() {
           )}
         />
         <FormError message={formError} />
+        <FormSuccess message={formSuccess} />
         <Button
           disabled={form.formState.isSubmitting}
           type='submit'

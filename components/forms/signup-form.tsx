@@ -140,7 +140,7 @@ export function SignupForm() {
               <div className='relative'>
                 <FormControl>
                   <Input
-                    type={showPassword ? 'text' : 'password'}
+                    type={showConfirmPassword ? 'text' : 'password'}
                     className='pr-8 text-sm'
                     placeholder='Confirm password'
                     {...field}
@@ -172,7 +172,7 @@ export function SignupForm() {
           type='submit'
           className='w-full'
         >
-          Signin
+          Sign up
         </Button>
       </form>
     </Form>

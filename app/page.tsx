@@ -35,7 +35,7 @@ export default function Home() {
               size={'lg'}
               className='flex items-center gap-2'
             >
-              <span>Sign in</span>
+              <span>Log in</span>
               <ArrowRight />
             </Button>
           </Link>

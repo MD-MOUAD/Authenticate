@@ -13,6 +13,7 @@ export default async function Page() {
       <p>id: {session?.user?.id}</p>
       <p>name: {session?.user?.name}</p>
       <p>email: {session?.user?.email}</p>
+      <p>ROLE: {session?.user?.role}</p>
       {session?.user?.image && (
         <div className='size-44'>
           <Image
@@ -30,7 +31,11 @@ export default async function Page() {
           await signOut({ redirectTo: '/' })
         }}
       >
-        <Button className='flex items-center gap-2' variant='destructive'>
+        <Button
+          type='submit'
+          className='flex items-center gap-2'
+          variant='destructive'
+        >
           <LogOut size={24} strokeWidth={3} /> <span>Logout</span>
         </Button>
       </form>

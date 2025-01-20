@@ -19,7 +19,7 @@ export const signupFormSchema = z
 
     confirmPassword: z
       .string()
-      .min(8, { message: 'Confirm Password must match the Password.' }),
+      .nonempty('Confirm Password must match the Password.'),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: 'Passwords do not match.',
